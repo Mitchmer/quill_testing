@@ -1,21 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'
+import PageShow from './PageShow'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+class App extends React.Component {
+  styles = {
+    
   }
+  constructor(props) {
+    super(props)
+    this.state = { text: '' }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(value) {
+    this.setState({ text: value })
+  }
+
+//   testFunc = () => {
+//     let doc = new DOMParser().parseFromString('<div><b>Hello!</b></div>', 'text/html')
+    
+// }
+
+  // }
+
+  // handleSumbit = () => {
+  //   const formInput = this.state.text
+  //   formInput.push(inputArray)
+  // }
+  // split('').splice("").join
+  render() {
+
+    return (
+      <div>
+        <form>
+          <ReactQuill 
+            value={this.state.text}
+            onChange={this.handleChange} 
+          />
+          <button>Submit</button>
+
+        </form>
+        <PageShow
+            value={this.state.text}
+            />
+            {/* {doc} */}
+      </div>
+    )
+  }
+  
 }
 
 export default App;
